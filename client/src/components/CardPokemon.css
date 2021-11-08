@@ -1,0 +1,44 @@
+.stylesCard {
+  background-color: #eeb3ff;
+  margin: 20px;
+  width: 18rem;
+  border-radius: 8px;
+  display: inline-block;
+  transition: all 400ms ease;
+  box-sizing: content-box;
+  margin: 10px;
+}
+
+.stylesCard:hover {
+box-shadow: 20px 20px 20px rgb(0, 0, 0, 0,4);
+transform: translateY(-3%)
+}
+
+
+.name {
+  font-family:-apple-system,'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.type {
+
+  text-decoration: none;
+}
+
+
+.typeStyle {
+  list-style-type: none;
+  color: rgb(0, 0, 0);
+  text-decoration-line: none;
+  display:inline;
+     padding-left:3px;
+     padding-right:3px;
+
+}
+
+.img {
+  height: 150px;
+  width: 150px;
+}

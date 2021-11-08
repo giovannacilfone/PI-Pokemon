@@ -1,0 +1,9 @@
+*{box-sizing:border-box;}
+
+.form {
+    width:300px;
+	padding:16px;
+	border-radius:10px;
+	margin:50px;
+	background-color: #f2c7ff;
+}
