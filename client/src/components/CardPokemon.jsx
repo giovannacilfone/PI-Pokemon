@@ -13,8 +13,10 @@ export default function CardPokemon({ name, types, image }) {
       </div>
       <div>
         <ul className="typeStyle">
-          <li className="type">{types[0]} </li>
-          <li> {types[1]}</li>
+          <li className="type">{
+          typeof types[0] === 'string' ? types[0] : types[0]?.name
+      } </li>
+          <li> {typeof types[1] === 'string' ? types[1] : types[1]?.name}</li>
         </ul>
       </div>
     </div>

@@ -39,8 +39,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    let { name, image, life, attack, defense, speed, height, weight, types } =
-      req.body;
+    let { name, image, life, attack, defense, speed, height, weight, types} = req.body
+
     const newPokemon = await Pokemon.create({
       name,
       image,
@@ -51,19 +51,23 @@ router.post("/", async (req, res, next) => {
       height,
       weight,
     });
-    console.log(types)
+
     if (!name) return res.json({ info: "El nombre es obligatorio" });
-    let findType = [];
-        const typeDb = await Type.findOne({
-          attributes: ["id"],
-          where: { name: types[0] },
-        });
-        findType.push(typeDb);
-        ;
-    return res.send("Pokemon created successfully");
+
+    if(Array.isArray(types) && types.length){
+      let dbTypes = await Promise.all(
+        types.map((e) => {
+          return Type.findOne({where:{ name: e}})
+        })
+      )
+     await newPokemon.setTypes(dbTypes)
+
+     return res.send("Pokemon creado exitosamente");
+    }
   } catch (err) {
     res.status(400).send("Error en data");
   }
-});
+})
+
 
 module.exports = router;

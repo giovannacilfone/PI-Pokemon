@@ -1,13 +1,23 @@
+import React from "react";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { getType,postPokemon } from "../store/actions/index.js";
+import {useHistory} from "react-router-dom"
+import { getType, postPokemon } from "../store/actions/index.js";
 import "./PokemonCreate.css";
+
+function validate(pokemon){
+  let errors = {};
+  if (!pokemon.name){
+    errors.name = "Se requiere un nombre"
+  } return errors
+}
 
 export default function PokemonCreate() {
   const dispatch = useDispatch();
   const history = useHistory();
   const types = useSelector((state) => state.types);
+
+  const [errors,setErrors] = useState({});
 
   const [pokemon, setPokemon] = useState({
     name: "",
@@ -25,8 +35,6 @@ export default function PokemonCreate() {
     dispatch(getType());
   }, []);
 
- 
-
   function handleSelect(e) {
     setPokemon({
       ...pokemon,
@@ -34,33 +42,39 @@ export default function PokemonCreate() {
     });
   }
 
-  function onInputChange(e) {
-    e.preventDefault();
-    setPokemon({
+
+function onInputChange(e) {
+  e.preventDefault();
+  setPokemon({
+    ...pokemon,
+    [e.target.name]: e.target.value,
+  });
+  setErrors(
+    validate({
       ...pokemon,
       [e.target.name]: e.target.value,
-    });
-  }
-  function onSubmit(e) {
-    e.preventDefault();
-dispatch(postPokemon(pokemon))
+    })
+  );
+}
 
-    // axios.post("http://localhost:3001/pokemons/", pokemon).then(() => {
-    //   history.push("/home");
-     alert("Personaje creado con exito");
-     setPokemon ({
-      name: "",
-      types: [],
-      image: "",
-      life: 0,
-      attack: 0,
-      defense: 0,
-      speed: 0,
-      height: 0,
-      weight: 0,
-     })
-    history.push("/home");
-  }
+
+function onSubmit(e) {
+  e.preventDefault();
+  dispatch(postPokemon(pokemon));
+  alert("Personaje creado con exito");
+  setPokemon({
+    name: "",
+    types: [],
+    image: "",
+    life: 0,
+    attack: 0,
+    defense: 0,
+    speed: 0,
+    height: 0,
+    weight: 0,
+  });
+  history.push("/home");
+}
 
   return (
     <form className="form" onSubmit={onSubmit}>
@@ -72,6 +86,7 @@ dispatch(postPokemon(pokemon))
           type="text"
           value={pokemon.name}
         />{" "}
+        {errors.name && <p className="error"> {errors.name}</p>}
       </p>
       <p>
         <label htmlFor="">Imagen: </label>
@@ -153,3 +168,4 @@ dispatch(postPokemon(pokemon))
     </form>
   );
 }
+

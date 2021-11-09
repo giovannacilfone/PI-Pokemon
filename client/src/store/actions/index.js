@@ -8,7 +8,6 @@ return async function () {
 }
 }
 
-
 export function searchPoke(name) {
   return async function (dispatch) {
     try {

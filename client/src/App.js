@@ -7,6 +7,7 @@ import Detail from "./components/Detail";
 
 
 
+
 function App() {
   return (
     <BrowserRouter>

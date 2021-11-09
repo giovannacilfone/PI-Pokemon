@@ -30,15 +30,19 @@ console.log(details)
                     <h3 className="type1">
                     <ul>
                       <li>
-                        {p.types[0]}-  
-                         {p.types[1]}
+                        {
+                        typeof p.types[0] === 'string' ? p.types[0] : p.types[0]?.name}-  
+                         {
+                         typeof p.types[1] === 'string' ? p.types[1] : p.types[1]?.name}
+                
                       </li>
                     </ul>
                     </h3>
                   </div>
                 ) : (
                   <div>
-                    <h3 className="type2">{p.types[0]}</h3>
+                    <h3 className="type2">{
+                    typeof p.types[0] === 'string' ? p.types[0] : p.types[0]?.name}</h3>
                   </div>
                 )}
 

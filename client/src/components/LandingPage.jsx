@@ -11,7 +11,7 @@ export default function LandingPage() {
       <div>
         </div>
         <Link to="/home">
-          <button className="button"> ¡Start!</button>
+          <button className="button"> INGRESAR </button>
         </Link>
 </div>
  
