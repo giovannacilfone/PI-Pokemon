@@ -13,7 +13,7 @@ router.get("/", async (_req, res, next) => {
       if (!find)  { // Si no lo encuentra..
         await Type.create({ name: type.name }); //Lo agrega a la base de datos
       } else {
-        return res.json(await Type.findAll()) // Sino devuelve todos los personajes
+        return res.json(await Type.findAll()) // Sino devuelve todos los tipos
       }
     }
     res.json(await Type.findAll()); //Finalmente devuelvo todos los tipos de la Db.
