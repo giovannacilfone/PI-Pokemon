@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useHistory} from "react-router-dom"
 import { getType, postPokemon } from "../store/actions/index.js";
+import { Link } from "react-router-dom";
 import "./PokemonCreate.css";
 
 function validate(pokemon){
@@ -38,7 +39,7 @@ export default function PokemonCreate() {
   function handleSelect(e) {
     setPokemon({
       ...pokemon,
-      types: [...pokemon.types, e.target.value],
+      type: [...pokemon.type, e.target.value],
     });
   }
 
@@ -78,26 +79,31 @@ function onSubmit(e) {
 
   return (
     <form className="form" onSubmit={onSubmit}>
-      <p>
-        <label htmlFor=""> Nombre: </label>
+      <h3 className="title"> ¡Crea tu pokemon!</h3>
+      
+        <label for="name"> Nombre: </label>
         <input
           onChange={onInputChange}
+          id="name"
           name="name"
           type="text"
           value={pokemon.name}
+          required
+          className="input"
         />{" "}
         {errors.name && <p className="error"> {errors.name}</p>}
-      </p>
-      <p>
+     
+     
         <label htmlFor="">Imagen: </label>
         <input
           onChange={onInputChange}
           name="image"
           type="text"
           value={pokemon.image}
+          className="input"
         />{" "}
-      </p>
-      <p>
+      
+      
         {" "}
         <label htmlFor="">Vida: </label>
         <input
@@ -105,36 +111,40 @@ function onSubmit(e) {
           name="life"
           type="number"
           value={pokemon.life}
+          className="input"
         />{" "}
-      </p>
-      <p>
+    
+     
         <label htmlFor="">Fuerza: </label>
         <input
           onChange={onInputChange}
           name="attack"
           type="number"
           value={pokemon.attack}
+          className="input"
         />{" "}
-      </p>
-      <p>
+     
+     
         <label htmlFor="">Defensa: </label>
         <input
           onChange={onInputChange}
           name="defense"
           type="number"
           value={pokemon.defense}
+          className="input"
         />{" "}
-      </p>
-      <p>
+     
+     
         <label htmlFor="">Velocidad: </label>
         <input
           onChange={onInputChange}
           name="speed"
           type="number"
           value={pokemon.speed}
+          className="input"
         />{" "}
-      </p>
-      <p>
+      
+     
         {" "}
         <label htmlFor="">Altura: </label>
         <input
@@ -142,29 +152,34 @@ function onSubmit(e) {
           name="height"
           type="number"
           value={pokemon.height}
+          className="input"
         />{" "}
-      </p>
-      <p>
+     
+     
         <label htmlFor="">Peso: </label>
         <input
           onChange={onInputChange}
           name="weight"
           type="number"
           value={pokemon.weight}
+          className="input"
         />{" "}
-      </p>
-      <p>
+      
+      
         {" "}
+        <p className="types-s">
         <select onChange={handleSelect}>
           {types.map((e) => (
-            <option value={e.name}>{e.name}</option>
+            <option  value={e.name}>{e.name}</option>
           ))}{" "}
         </select>
         <ul>
           <li>{pokemon.types.map((e) => e + " , ")}</li>
         </ul>
-      </p>
-      <button type="submit">Crear</button>
+        </p>
+        <Link to="/home">
+      <button type="submit" className="atras">Atrás</button></Link>
+      <button type="submit" className="bottom">Crear</button>
     </form>
   );
 }

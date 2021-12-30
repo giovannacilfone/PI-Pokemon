@@ -1,24 +1,26 @@
 .logo {
-  width: 100px;
-  height: 50px;
+  width:140px;
   float: left;
   margin-left: 10px;
+  /* margin-bottom: 30px; */
+  transform: translate(0px,-18px)
 }
 
 .created {
   float: right;
-  margin-right: 10px;
+  margin-top: 15px;
+  margin-right: 20px;
+  font-size: 35px;
   color: white;
-  padding: 5px 14px;
-
+  font-family: 'Rancho', cursive;
+  transition-duration: 0.4s
+}
+.created:hover{
+  color: rgba(196, 168, 224, 0.938);
 }
 
 .header {
-  list-style-type: none;
   overflow: hidden;
+  height: 70px;
   background-color: #290035;
-}
-
-.search {
- margin-top: 20px
 }

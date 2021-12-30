@@ -11,13 +11,13 @@ return async function () {
 export function searchPoke(name) {
   return async function (dispatch) {
     try {
-      var json = await axios.get("http://localhost:3001/pokemons?name=" + name);
+      var json = await axios.get("http://localhost:3001/pokemons?name=" + name) 
       return dispatch({
         type: "SEARCH_NAME",
         payload: json.data,
       });
-    } catch (error) {
-      console.log(error);
+    } catch {
+      return alert("No se encontró el pokemon");
     }
   };
 }

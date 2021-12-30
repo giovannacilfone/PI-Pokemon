@@ -1,23 +1,24 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchPoke } from "../store/actions/index.js";
-
 import "./SearchBar.css";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
+  const [name, setName] = useState("")
 
+
+  
   const handleInputChange = (e) => {
     e.preventDefault()
     setName(e.target.value);
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchPoke(name))
   }
+
   return (
     <div>
       <input

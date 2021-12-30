@@ -15,20 +15,22 @@ export default function Detail(props) {
 console.log(details)
   return (
     <div className="container">
+      <div className="volver">
+      <Link to="/home" className="letter"> Volver </Link> </div>
       <div>
         {details.length ? (
           details.map((p) => (
             <Link to={`/home/${p.id}`}>
               <div>
                 <h1 className="names">{p.name.toUpperCase()}</h1>
-                <h2>#{p.id}</h2>
+                <h2 className="id">#{p.id}</h2>
               </div>
               <div>
                 <img  className="imagen" src={p.image} alt="" width="250px" height="250px" />
                 {p.types.length === 2 ? (
                   <div>
                     <h3 className="type1">
-                    <ul>
+                    <ul className="type">
                       <li>
                         {
                         typeof p.types[0] === 'string' ? p.types[0] : p.types[0]?.name}-  
@@ -49,7 +51,7 @@ console.log(details)
                 <div>
                   <h4>
                   <ul>
-                    <li>
+                    <li className="lista">
                       Vida: {p.life} Ps -
                       Fuerza: {p.attack} % -
                       Defensa: {p.defense} % -

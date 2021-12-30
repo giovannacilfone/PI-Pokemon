@@ -19,7 +19,7 @@ function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons) //
   const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage] = useState(9);
+  const [pokemonsPerPage] = useState(12);
   const indexOfLastPokemon = currentPage * pokemonsPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
   const currentPokemons = allPokemons.slice(
@@ -57,7 +57,6 @@ function Home() {
       <SearchBar className="search"/>
       <div className="home">
         <div>
-         
           <select name="select" onChange={onSelectsChange} className="a-z">
             <option value="Filtro"> A-Z:</option>
             <option value="ASCENDENTE">Ascendente</option>
@@ -95,8 +94,7 @@ function Home() {
             allPokemons={allPokemons.length}
             paginado={paginado}
           />
-          {currentPokemons &&
-            currentPokemons.map((e) => {
+          {currentPokemons?.map((e) => {
               return (
                 <fragment>
                   <Link to={"/home/" + e.id}>
@@ -108,7 +106,7 @@ function Home() {
                   </Link>
                 </fragment>
               );
-            })}
+            })} 
         </div>
       </div>
     </>
