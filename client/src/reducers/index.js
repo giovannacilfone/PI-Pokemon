@@ -44,7 +44,6 @@ function rootReducer(state = initialState, action) {
           }
           return 0;
         });
-  
         return {
           ...state,
           pokemons:
@@ -63,7 +62,7 @@ function rootReducer(state = initialState, action) {
         if (a.name > b.name) {
           return action.payload === "ASCENDENTE" ? 1 : -1;
         }
-        return 0;
+        return 0; 
       });
 
       return {
